@@ -1,0 +1,24 @@
+void setup() {
+  // put your setup code here, to run once:
+  randomSeed(analogRead(2));
+  Serial.begin(115200);
+}
+
+int i = 0;
+
+#define RAND_STR_LEN 8
+void loop() {
+
+  char randomString[RAND_STR_LEN + 1];
+
+  for (int j = 0; j > RAND_STR_LEN; j++) {
+
+    char C = char(random(0, 255));
+    Serial.print(C);
+    sprintf(randomString, "%s%c", randomString, C);
+  }
+
+  Serial.printf("   %i Printing some random junk: [%s]\n\r", i, randomString);
+
+  i ++;
+}
